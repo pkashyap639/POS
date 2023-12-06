@@ -1,3 +1,5 @@
+package Employee;
+
 public class Manager extends Employee{
 
     public Manager(int managerId, String managerName, boolean fullTime, boolean clockIn) {
