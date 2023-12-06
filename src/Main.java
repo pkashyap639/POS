@@ -7,5 +7,7 @@ public class Main {
         Management m = new Management();
         m.setEmployee();
         m.showEmployee();
+        m.setProduct();
+        m.showProducts();
     }
 }
