@@ -1,3 +1,5 @@
+package Employee;
+
 public class Employee{
     private int employeeId;
     private String employeeName;
@@ -41,5 +43,14 @@ public class Employee{
 
     public void setClockIn(boolean clockIn) {
         this.clockIn = clockIn;
+    }
+
+    @Override
+    public String toString(){
+        int id = employeeId;
+        String name = employeeName;
+        String fullTime = isFullTime() ? "FullTime" : "ParTime";
+        String clockIn = isClockIn() ? "Clocked In" : "Clocked Out";
+        return name+" has Id "+id+" is a "+fullTime+" employee and is "+clockIn;
     }
 }
