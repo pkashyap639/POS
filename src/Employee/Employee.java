@@ -45,6 +45,24 @@ public class Employee{
         this.clockIn = clockIn;
     }
 
+    public void clockIn(){
+        if(!isClockIn()){
+            clockIn = true;
+            System.out.println(employeeName+" is clocked in");
+        }else{
+            System.out.println(employeeName+" is already clocked in");
+        }
+    }
+
+    public void clockOut(){
+        if(isClockIn()){
+            clockIn = false;
+            System.out.println(employeeName+ " is clocked out");
+        }else{
+            System.out.println(employeeName+" is already clocked in");
+        }
+    }
+
     @Override
     public String toString(){
         int id = employeeId;
