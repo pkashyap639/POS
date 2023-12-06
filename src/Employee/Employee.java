@@ -59,7 +59,7 @@ public class Employee{
             clockIn = false;
             System.out.println(employeeName+ " is clocked out");
         }else{
-            System.out.println(employeeName+" is already clocked in");
+            System.out.println("No one is clocked in");
         }
     }
 

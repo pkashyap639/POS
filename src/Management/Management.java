@@ -6,10 +6,12 @@ import Employee.Cashier;
 import Products.Product;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Management {
     ArrayList<Employee> employee = new ArrayList<Employee>();
     ArrayList<Product> product = new ArrayList<Product>();
+    Scanner s = new Scanner(System.in);
 
     // Employees
     public void setEmployee(){
@@ -48,5 +50,36 @@ public class Management {
         }
     }
 
+    // clocking functionality
+    public void doClockIn(){
+        System.out.println("Enter Employee Id: ");
+        int empId = s.nextInt();
+        boolean empFound = false;
+        for (Employee emp: employee) {
+            if(empId == emp.getEmployeeId()){
+                if(!emp.isClockIn()){
+                    emp.clockIn();
+                    empFound = true;
+                    break;
+                }
+            }
+        }
+        if(!empFound){
+            System.out.println("Employee does Not Exists\n");
+        }
+    }
+
+    public void doClockOut(){
+        boolean anyClockIn = false;
+        for (Employee emp: employee) {
+            if(emp.isClockIn()){
+                emp.clockOut();
+                anyClockIn = true;
+            }
+        }
+        if(!anyClockIn){
+            System.out.println("No one is clocked in ");
+        }
+    }
 
 }
