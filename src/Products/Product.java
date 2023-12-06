@@ -1,6 +1,6 @@
 package Products;
 
-public class Product {
+public class Product implements IProduct{
     private int productId;
     private String productName;
     private double productPrice;
@@ -23,5 +23,25 @@ public class Product {
     @Override
     public String toString() {
         return productId+" "+productName+" "+productPrice+" "+productType;
+    }
+
+    @Override
+    public int getProductId() {
+        return productId;
+    }
+
+    @Override
+    public String getProductName() {
+        return productName;
+    }
+
+    @Override
+    public double getProductPrice() {
+        return productPrice;
+    }
+
+    @Override
+    public String getProductType() {
+        return productType;
     }
 }
