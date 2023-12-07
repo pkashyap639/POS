@@ -101,31 +101,38 @@ public class Management {
         return myEmployee;
     }
 
-    public void punchProduct(){
-        if(getCurrentEmployee() == null) return;
+
+    public void punchProduct() {
+        if (getCurrentEmployee() == null) return;
         showProducts();
         int productId;
         ArrayList<Product> punchedProduct = new ArrayList<Product>();
-        do{
+        do {
             boolean found = false;
             System.out.println("Enter Product Id");
             productId = s.nextInt();
-            for (Product p: product) {
-                if(productId == p.getProductId()){
+            for (Product p : product) {
+                if (productId == p.getProductId()) {
                     punchedProduct.add(p);
                     found = true;
                     break;
                 }
             }
-            if(!found){
+            if (!found) {
                 System.out.println("Wrong Product");
             }
-        }
-        while (productId!=-1);
+        } while (productId != -1);
+
         Recipt currentRecipt = new Recipt(getCurrentEmployee(), punchedProduct);
         allRecipt.add(currentRecipt);
-        System.out.println(currentRecipt.showRecipt());
+        displayReceipt(currentRecipt);
     }
+
+    private void displayReceipt(Recipt receipt) {
+        double totalAmount = receipt.showRecipt();
+        System.out.println("Total Amount: " + String.format("%2f",totalAmount));
+    }
+
 
     public void showAllRecipts() {
         for (var r : allRecipt) {
