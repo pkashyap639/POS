@@ -126,4 +126,10 @@ public class Management {
         allRecipt.add(currentRecipt);
         System.out.println(currentRecipt.showRecipt());
     }
+
+    public void showAllRecipts() {
+        for (var r : allRecipt) {
+            r.showRecipt();
+        }
+    }
 }
