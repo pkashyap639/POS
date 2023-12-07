@@ -17,6 +17,7 @@ public class Main {
             System.out.println("2. Clock Out\n");
             System.out.println("3. Get Current Employee\n");
             System.out.println("4. Punch Product\n");
+            System.out.println("5. Show All Recipts\n");
             System.out.println("-1. Exit\n");
             choice = s.nextInt();
             switch (choice){
@@ -24,7 +25,8 @@ public class Main {
                 case 2: m.doClockOut(); break;
                 case 3: m.getCurrentEmployee(); break;
                 case 4: m.punchProduct(); break;
-                case 5:
+                case 5: m.showAllRecipts(); break;
+                case 6:
                     System.out.println("Exiting Program\n");break;
                 default:
                     System.out.println("Invalid Choice\n");
