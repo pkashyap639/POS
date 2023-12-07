@@ -1,5 +1,6 @@
 package Payment;
 
 public abstract class Payment {
-    public abstract void processPaymeny(double amount);
+    public abstract void processPayment(double amount);
+    public abstract void processPayment(double amount, double givenAmount);
 }
