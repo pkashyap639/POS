@@ -16,7 +16,12 @@ public class CardPayment extends Payment{
     }
 
     @Override
-    public void processPaymeny(double amount) {
+    public void processPayment(double amount) {
+        System.out.println("Accepted : "+amount+" by Card Number: "+cardNumber);
+    }
 
+    @Override
+    public void processPayment(double amount, double givenAmount) {
+        processPayment(amount);
     }
 }

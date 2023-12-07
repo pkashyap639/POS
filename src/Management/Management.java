@@ -3,9 +3,11 @@ package Management;
 import Employee.Employee;
 import Employee.Manager;
 import Employee.Cashier;
+import Payment.Payment;
 import Products.Product;
 import Recipt.Recipt;
-
+import Payment.CardPayment;
+import Payment.CashPayment;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -126,6 +128,7 @@ public class Management {
         Recipt currentRecipt = new Recipt(getCurrentEmployee(), punchedProduct);
         allRecipt.add(currentRecipt);
         displayReceipt(currentRecipt);
+        processPayment(currentRecipt.showRecipt());
     }
 
     private void displayReceipt(Recipt receipt) {
@@ -138,5 +141,33 @@ public class Management {
         for (var r : allRecipt) {
             r.showRecipt();
         }
+    }
+
+    public void processPayment(double totalAmount){
+        System.out.println("Select Payment Method:");
+        System.out.println("1. Cash");
+        System.out.println("2. Card");
+        int paymentChoice = s.nextInt();
+
+        Payment paymentMethod;
+        switch (paymentChoice) {
+            case 1:
+                paymentMethod = new CashPayment();
+                System.out.println("Please give money: ");
+                double givenAmount = s.nextDouble();
+                paymentMethod.processPayment(totalAmount,givenAmount);
+                break;
+            case 2:
+                System.out.println("Enter Card Number:");
+                String cardNumber = s.next();
+                paymentMethod = new CardPayment(cardNumber);
+                paymentMethod.processPayment(totalAmount);
+                break;
+            default:
+                System.out.println("Invalid Payment Method. Defaulting to Cash Payment.");
+                paymentMethod = new CashPayment();
+                break;
+        }
+
     }
 }
