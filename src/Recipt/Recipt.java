@@ -12,9 +12,18 @@ public class Recipt implements IRecipt{
     private ArrayList<Product> product;
     private Employee employee;
 
+    public Recipt(){
+
+    }
     public Recipt(Employee employee) {
         this.reciptNumber = counter++;
         this.product = new ArrayList<Product>();
+        this.employee = employee;
+    }
+
+    public Recipt(Employee employee, ArrayList<Product> allProduct){
+        this.reciptNumber = counter++;
+        this.product = allProduct;
         this.employee = employee;
     }
 
