@@ -4,6 +4,7 @@ import Employee.Employee;
 import Employee.Manager;
 import Employee.Cashier;
 import Products.Product;
+import Recipt.Recipt;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,6 +12,7 @@ import java.util.Scanner;
 public class Management {
     ArrayList<Employee> employee = new ArrayList<Employee>();
     ArrayList<Product> product = new ArrayList<Product>();
+    ArrayList<Recipt> allRecipt = new ArrayList<Recipt>();
     Scanner s = new Scanner(System.in);
 
     // Employees
@@ -82,6 +84,46 @@ public class Management {
         }
     }
 
+    // get current clockin employee
+    public Employee getCurrentEmployee(){
+        Employee myEmployee = null;
+        for (Employee emp: employee) {
+            if(emp.isClockIn()){
+                myEmployee = emp;
+                System.out.println(myEmployee.getEmployeeName()+" is already clocked in");
+                break;
+            }
+        }
+        if(myEmployee == null){
+            System.out.println("No One is Clocked In Yet");
+            return null;
+        }
+        return myEmployee;
+    }
 
-
+    public void punchProduct(){
+        if(getCurrentEmployee() == null) return;
+        showProducts();
+        int productId;
+        ArrayList<Product> punchedProduct = new ArrayList<Product>();
+        do{
+            boolean found = false;
+            System.out.println("Enter Product Id");
+            productId = s.nextInt();
+            for (Product p: product) {
+                if(productId == p.getProductId()){
+                    punchedProduct.add(p);
+                    found = true;
+                    break;
+                }
+            }
+            if(!found){
+                System.out.println("Wrong Product");
+            }
+        }
+        while (productId!=-1);
+        Recipt currentRecipt = new Recipt(getCurrentEmployee(), punchedProduct);
+        allRecipt.add(currentRecipt);
+        System.out.println(currentRecipt.showRecipt());
+    }
 }
